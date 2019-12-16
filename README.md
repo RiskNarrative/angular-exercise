@@ -10,8 +10,14 @@ Create a company search application using Angular X
 * Use Material Design or Bootstrap for styling
 * Provide input validation
 
-## Search endpoint
-https://dev.trunarrative.cloud/TruProxyAPI/rest/companies/search?q={search_term}
+## Search for Company endpoint
+https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Search?Query={search_term}
 
-## Detail endpoint
-https://dev.trunarrative.cloud/TruProxyAPI/rest/companies/company/{number}
+## Get Company Officers endpoint
+https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Officers?CompanyNumber={number}
+
+## TruRest API documentation
+https://api.trunarrative.com/
+
+## Credentials
+Credentials for authenticating API calls will be provided in due course.

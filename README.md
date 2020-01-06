@@ -17,11 +17,9 @@ Create a company search application using Angular 7 or above.
 * Use any NPM components you feel is appropriate for the task
 
 ## Resources
-**Search for Company: **
-`https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Search?Query={search_term}`
+**Search for Company:** `https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Search?Query={search_term}`
 
-**Get Company Officers: **
-`https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Officers?CompanyNumber={number}`
+**Get Company Officers:** `https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Officers?CompanyNumber={number}`
 
 ## TruRest API documentation
 [API Documentation](https://api.trunarrative.com/)

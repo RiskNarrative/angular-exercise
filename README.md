@@ -1,5 +1,5 @@
 ## Goal
-Create a company search application using Angular 7 or above.
+Create a company search application using Angular 7 or above. 
 
 ## Criteria
 * A user can search for a company by name or company number

@@ -23,9 +23,11 @@ https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Search?Query={sea
 https://www.trunarrative.cloud/TruAccountAPI/rest/Companies/v1/Officers?CompanyNumber={number}
 
 ## TruRest API documentation
-https://api.trunarrative.com/
+[API Documentation](https://api.trunarrative.com/)
 
 ## Credentials
-API credentials will be provided.
+API credentials will be provided seperately from this exercise.
 
 ## Wireframes
+
+![Wireframe](https://raw.githubusercontent.com/TruNarrative/angular-exercise/master/CompanySearch.jpeg)

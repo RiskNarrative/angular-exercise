@@ -114,4 +114,4 @@ Example: curl -s -H 'x-api-key: xxxxxxxxxxxxx' "https://angular-exercise.trunarr
 
 ## Wireframes
 
-![Wireframe](https://raw.githubusercontent.com/TruNarrative/angular-exercise/master/CompanySearch.jpeg)
+![Wireframe](https://raw.githubusercontent.com/TruNarrative/angular-exercise/master/CompanySearch.png)

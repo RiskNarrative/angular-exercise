@@ -25,7 +25,7 @@ Create a company search application using Angular 7 or above.
 
 ## API documentation
 
-**Authentication**
+**Authentication:**\
 Use the API key provided in your request header when calling the endpoints. 
 Example: curl -s -H 'x-api-key: xxxxxxxxxxxxx' "https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Officers?CompanyNumber=10241297"
 

@@ -23,14 +23,13 @@ Create a company search application using Angular 7 or above.
 **Get Company Officers:**  
 `https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Officers?CompanyNumber={number}`
 
-## TruRest API documentation
-[API Documentation](https://api.trunarrative.com/)
+## API documentation
 
-[Authentication](https://api.trunarrative.com/?version=latest#authentication) - *API credentials will be provided seperately*
+**Authentication**
+Use the API key provided in your request header when calling the endpoints. 
+Example: curl -s -H 'x-api-key: xxxxxxxxxxxxx' "https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Officers?CompanyNumber=10241297"
 
-[Search for Company](https://api.trunarrative.com/?version=latest#8ef3c31c-63ba-4c20-976d-ea9b7627309f)
-
-[Get Company Officers](https://api.trunarrative.com/?version=latest#78d8b828-b6ba-47ef-a4c9-0249ab3169bc)
+*API credentials will be provided seperately*
 
 ## Wireframes
 

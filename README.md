@@ -21,7 +21,7 @@ Create a company search application using Angular 7 or above.
 `https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Search?Query={search_term}`
 
 <details>
-  <summary>Example Response</summary>
+  <summary>Response Example</summary>
   
   <pre>
   {
@@ -65,7 +65,7 @@ Create a company search application using Angular 7 or above.
 **Get Company Officers:**  
 `https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Officers?CompanyNumber={number}`
 <details>
-  <summary>Example Response</summary>
+  <summary>Response Example</summary>
   
   <pre>
   {

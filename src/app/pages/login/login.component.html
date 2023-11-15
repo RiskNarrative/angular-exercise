@@ -1,0 +1,54 @@
+<div class="d-flex flex-column min-vh-100">
+  <div class="container">
+    <div class="row d-flex mt-2 mb-3">
+      <a [routerLink]="['/']">Home</a>
+    </div>
+    <div class="row d-flex flex-column">
+      <!-- Name of the company  -->
+      <div class="bd-company-prop-group">
+        <h1 class="text-uppercase">Sign In to Portal</h1>
+        <hr />
+      </div>
+      <div *ngIf="isInvalidLogin" class="text-danger">
+        Signin Failed ! Please retry
+      </div>
+      <form (ngSubmit)="onSubmit()">
+        <div class="row d-flex flex-column">
+          <div class="mb-3 col-md-6 col-xs-12">
+            <label for="test" class="form-label fw-bolder">username</label>
+            <input
+              type="text"
+              class="form-control bd-input"
+              id="username"
+              [(ngModel)]="username"
+              name="username"
+              required
+              [ngClass]="{ 'is-invalid': isInvalidUsername }"
+            />
+            <div *ngIf="isInvalidUsername" class="invalid-feedback">
+              Please enter username.
+            </div>
+          </div>
+          <div class="mb-3 col-md-6 col-xs-12">
+            <label for="password" class="form-label fw-bolder">Password</label>
+            <input
+              type="password"
+              class="form-control bd-input"
+              id="password"
+              [(ngModel)]="password"
+              name="password"
+              required
+              [ngClass]="{ 'is-invalid': isInvalidPass }"
+            />
+            <div *ngIf="isInvalidPass" class="invalid-feedback">
+              Please enter password.
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-success mt-3">Sign In</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

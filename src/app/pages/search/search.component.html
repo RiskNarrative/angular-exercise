@@ -1,0 +1,40 @@
+<div
+  class="d-flex flex-column align-items-center justify-content-center min-vh-100"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="d-flex justify-content-center">
+          <h2>Company Search</h2>
+        </div>
+
+        <div
+          class="input-group d-flex justify-content-center align-self-center mb-3 mt-3"
+        >
+          <input
+            [(ngModel)]="searchQuery"
+            type="text"
+            class="form-control bd-input"
+            aria-describedby="Search"
+            (keyup.enter)="fetchCompanies()"
+            placeholder="Company name or number .."
+            [ngClass]="{ 'is-invalid': isInvalid }"
+          />
+          <div *ngIf="isInvalid" class="invalid-feedback">
+            Please enter a search term.
+          </div>
+        </div>
+
+        <div class="button text-center">
+          <button
+            type="button"
+            (click)="fetchCompanies()"
+            class="btn btn-primary"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

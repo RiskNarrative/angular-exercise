@@ -41,23 +41,34 @@ npm run lint:fix
 - Restrict access to details page (you may mock the user authentication) (**Completed**)
 - Implement paging of the result (**Completed**)
 
-## App Structure
+## Project Folder Structure
 
-Followed a structure for creating the components and pages:
+- **auth:** Contains files related to authentication and authorization (guards, interceptors, services).
 
-/auth: Contains files related to authentication and authorization (guards, interceptors, services).
-/components: Divided into common components and feature-specific components.
-/interceptors: Contains HTTP interceptors, made mock, api interceptor, and other interceptors like logging, error which needs to be created.
-/layout: Contains layout-related components (main layout, sidebar, etc.).
-/models: Defines interfaces and models used in the project.
-/pages: Each subfolder represents a feature/module, and within each feature/module, you have a component and a routing module.
-/services: Contains various services used in the application (mock service, API service, etc.).
-/styles: Will Include SCSS files, such as variables, mixins, and a main styles file.
-app.module.ts: Angular root module.
-app-routing.module.ts: Handles application-level routing.
-app.component.ts: Main component serving as the root component of the application.
-/assets: Contains static assets (images, fonts, etc.).
-/environments: Configuration files for different environments (development, production, etc.).
+- **components:** Divided into common components and feature-specific components.
+
+- **interceptors:** Contains HTTP interceptors, other interceptor can be created like logger, error etc.
+
+- **layout:** Contains layout-related components (main layout, sidebar, etc.).
+
+- **models:** Defines interfaces and models used in the project.
+
+- **pages:** Each subfolder represents a feature/module, and within each feature/module, you have a component and a routing module.
+
+- **services:** Contains various services used in the application (data service, API service, etc.).
+
+- **styles:** Includes SCSS files, such as variables, mixins, and a main styles file.
+
+- **app.module.ts:** Angular root module.
+
+- **app-routing.module.ts:** Handles application-level routing.
+
+- **app.component.ts:** Main component serving as the root component of the application.
+
+- **assets:** Contains static assets (images, fonts, etc.).
+
+- **environments:** Configuration files for different environments (development, production, etc.).
+
 
 
 # App Process Company Search and Details Viewer

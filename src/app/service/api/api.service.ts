@@ -5,7 +5,8 @@ import { ISearchResults } from '../../models/searchResults';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../../environment';
-import { IOfficer } from '../../models/officers';
+import { IOfficer, IOfficersResponse } from '../../models/officers';
+import { ICompany } from '../../models/company';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  fetchData(searchTern: string): Observable<any> {
+  fetchData(searchTern: string): Observable<ISearchResults | null> {
     if (this.cachedCompanyList && this.cachedCompanyList.searchTerm === searchTern) {
       // Return cached data if search term is the same
       return of(this.cachedCompanyList.searchResults);
     } else {
-      return this.http.get(`${this.apiUrl}/Search?Query=${searchTern}`).pipe(
-        map((data: any) => {
+      return this.http.get<ISearchResults>(`${this.apiUrl}/Search?Query=${searchTern}`).pipe(
+        map((data: ISearchResults) => {
           this.cachedCompanyList.searchResults = data;
           this.cachedCompanyList.searchTerm = searchTern;
 
@@ -44,29 +45,44 @@ export class ApiService {
     }
   }
   // This can be replaced for the company end point
-  getCompany(companyId: string): Observable<any> {
+  getCompany(companyId: string): Observable<ICompany> {
     try {
       const company = this.cachedCompanyList.searchResults.items.filter(x => x.company_number == companyId)
-      return of(company[0])
+      if (company[0]) {
+        return of(company[0] as ICompany);
+      } else {
+        // Handle the case where no company is found
+        throw new Error(`Company with companyId ${companyId} not found`);
+      }
     }
     catch (e) {
-      return of(e)
+      return of(e as ICompany).pipe(
+        map(error => {
+          throw error;
+        }),
+        catchError(error => {
+          // Log or handle the error as needed
+          console.error(error);
+          throw error;
+        })
+      );
+
     }
 
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<string> {
     const body = { username, password };
-    return this.http.post<any>(`${this.apiUrl}/login`, body);
+    return this.http.post<string>(`${this.apiUrl}/login`, body);
   }
 
-  getOfficers(companyId: string): Observable<any> {
+  getOfficers(companyId: string): Observable<IOfficer[] | null> {
     if (this.cachedCompanyList.officers && this.cachedCompanyList.companyId && this.cachedCompanyList.companyId == companyId) {
       // return cached data as company is same
       return of(this.cachedCompanyList.officers)
     } else {
-      return this.http.get(`${this.apiUrl}/Officers?CompanyNumber=${companyId}`).pipe(
-        map((data: any) => {
+      return this.http.get<IOfficersResponse>(`${this.apiUrl}/Officers?CompanyNumber=${companyId}`).pipe(
+        map((data: IOfficersResponse) => {
           this.cachedCompanyList.officers = data.items;
           this.cachedCompanyList.companyId = companyId;
           return data.items;

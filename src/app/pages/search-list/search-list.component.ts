@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../service/api/api.service';
 import { ISearchResults } from '../../models/searchResults';
 
@@ -8,7 +8,7 @@ import { ISearchResults } from '../../models/searchResults';
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.scss']
 })
-export class SearchListComponent {
+export class SearchListComponent implements OnInit {
   searchTerm: string = '';
   searchResults = {} as ISearchResults;
 
@@ -25,7 +25,7 @@ export class SearchListComponent {
         // Call the API service's fetchData method with the search term
         this.apiService.fetchData(this.searchTerm).subscribe(
           data => {
-            this.searchResults = data;
+            data?this.searchResults = data:this.searchResults =  {} as ISearchResults;
             // Process the data as needed
           },
           error => {

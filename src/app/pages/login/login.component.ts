@@ -27,7 +27,7 @@ export class LoginComponent {
       this.apiService.login(this.username, this.password).subscribe(
 
         {
-          next: (response) => {
+          next: () => {
             // Handle successful sign-in
             this.authService.IsloggedIn();
             // Redirect to a protected route or perform any other actions

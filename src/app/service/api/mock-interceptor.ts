@@ -15,20 +15,22 @@ import { environment } from '../../../../environment';
 export class MockInterceptor implements HttpInterceptor {
   private apiUrl = environment.apiUrl;
 
-  intercept(
-    req: HttpRequest<any>,
+  intercept<T>(
+    req: HttpRequest<T>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<T>> {
     // Check if the request is to the specific mock endpoint
     if (req.url === `${this.apiUrl}/Search` && !environment.production) {
       // Check if the API key is present in the headers
-      if (req.headers.get('api-key') === 'KjTFKEGi7R11DuvLSPaV16IJLfTPCkKV3qowOXtE') {
-        const x = req.headers.get('api-key')
-        console.log(x)
+      const apiKey = req.headers.get('api-key');
+
+      if (apiKey === 'KjTFKEGi7R11DuvLSPaV16IJLfTPCkKV3qowOXtE') {
+          // Check if the API key is present in the headers
+
         // Simulate an asynchronous operation using 'of' from RxJS
         const mockResponse = sampleFetchData;
 
-        return of(new HttpResponse({ status: 200, body: mockResponse }));
+        return of(new HttpResponse({ status: 200, body: mockResponse }) as HttpEvent<T>);
       } else {
         // API key is missing, return a forbidden response
         return throwError({ status: 403, statusText: 'Forbidden' });
@@ -37,15 +39,16 @@ export class MockInterceptor implements HttpInterceptor {
 
     if (req.url.includes('/v1/login')) {
       // Check if the API key is present in the headers
+      // Check if the API key is present in the headers
+      const { username, password } = req.body as { username: string; password: string };
+      if (username === 'testuser' && password === '@@123456') {
+        return of(new HttpResponse({ status: 200, body: 'success' })as HttpEvent<T>);
 
-        if (req.body.username === 'testuser' && req.body.password === '@@123456') {
-          return of(new HttpResponse({ status: 200, body: 'success' }));
-
-        }
-        else {
-          // API key is missing, return a forbidden response
-          return throwError({ status: 401, statusText: 'Unauthenticated' });
-        }
+      }
+      else {
+        // API key is missing, return a forbidden response
+        return throwError({ status: 401, statusText: 'Unauthenticated' });
+      }
 
     }
     // If the request is not to the mock endpoint, proceed with the original request

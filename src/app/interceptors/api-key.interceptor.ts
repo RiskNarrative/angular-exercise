@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
-  intercept(
-    req: HttpRequest<any>,
+  intercept<T>(
+    req: HttpRequest<T>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<T>> {
     // Add your API key to the headers
     const apiKey = 'KjTFKEGi7R11DuvLSPaV16IJLfTPCkKV3qowOXtE'; // Replace with your actual API key
 

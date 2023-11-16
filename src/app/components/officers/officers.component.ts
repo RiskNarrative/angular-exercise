@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ICompany } from '../../models/company';
 import { ApiService } from '../../service/api/api.service';
 import { IOfficer } from '../../models/officers';
 
@@ -19,8 +18,8 @@ export class OfficersComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const companyId = params['companyId'];
-      this.apiService.getOfficers(companyId).subscribe((res: IOfficer[]) => {
-        this.officers = res;
+      this.apiService.getOfficers(companyId).subscribe((res: IOfficer[] | null) => {
+        this.officers = res ?? [];
       })
     });
   }

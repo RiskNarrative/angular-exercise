@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICompany } from '../../models/company';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './company-search-list.component.html',
   styleUrls: ['./company-search-list.component.scss']
 })
-export class CompanySearchListComponent {
+export class CompanySearchListComponent implements OnInit {
   @Input() companies: ICompany[] = [];
   pagedCompanies: ICompany[] = [];
   pageNumbers: number[] = [];

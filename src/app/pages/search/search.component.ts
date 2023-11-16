@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,14 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent  {
   searchQuery: string = '';
   isInvalid: boolean = false;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
 
   fetchCompanies() {
  // Reset the validation state

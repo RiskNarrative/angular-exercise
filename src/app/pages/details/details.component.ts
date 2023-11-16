@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICompany } from '../../models/company';
 import { ApiService } from '../../service/api/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from '../../service/api/api.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
   company = {} as ICompany;
   isError: boolean = false;
   toggleShowOfficers: boolean = false;
@@ -27,6 +27,7 @@ export class DetailsComponent {
         this.company = res;
       }, (error) => {
         this.isError = true;
+        console.error(error.message) // This needs to be replaced with error handling wrapper
       })
     });
   }

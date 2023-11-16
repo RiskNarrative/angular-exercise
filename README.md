@@ -59,20 +59,45 @@ app.component.ts: Main component serving as the root component of the applicatio
 /assets: Contains static assets (images, fonts, etc.).
 /environments: Configuration files for different environments (development, production, etc.).
 
-Added Caching functionality so that we don't load the search list again if navigating back for the same search term. Ideally done as no separate API for company details, so it can be taken from cached data with the same search query.
 
-Also showing aspects of passing data from Router instead of requesting data again when the route is changed.
+# App Process Company Search and Details Viewer
 
-`MockdataService` for local isolated development and also for mocking the authentication. A hard refresh will log out the user, and the user would need to log in again. Thus, we can test this functionality (username: testuser, password: @@123456).
+## Overview
 
-`Officers` component requests data from server on component load instead of loading it on the page. It requests data when "List Officers" is clicked.
+This application facilitates the search for company details by providing the ability to search for a company using its name or number. Users can further click on a specific company to access detailed information.
 
-Added proxy config to resolve issues with CORS to develop locally.
+## Authentication
 
-Accessibility: submitting on Enter when the search term is entered in the Input search field page 1.
+If the user is not signed in, the application will prompt them to sign in before allowing access to detailed company information. For testing purposes, you can use the following sign-in credentials:
+
+
+## Usage
+
+1. **Search for a Company:**
+   - Enter the company name or number in the search bar.
+
+2. **View Company Details:**
+   - Click on a company to access its detailed information.
+
+3. **Sign In:**
+   - If the user is not signed in, they will be prompted to sign in.
+
+4. **Access Restricted Features:**
+   - Once signed in, the application will remember the user's authentication status and will not prompt for sign-in again.
+
+## Sign-In Credentials (For Testing)
+
+- **Username:** testuser
+- **Password:** @@123456
+
+**Note:** These credentials are provided for testing purposes only.
+
+Feel free to customize the instructions and details based on your application's specific features and requirements.
+
 
 ## Further Improvements & Refactoring that can be done
 
+- Writing unit tests for each component to test the functions.
 - Adding a loading screen when data is loading or in process.
 - Renaming folder service to services
 - Refactor pagination functions to be made generic of Type T into its own component and service so it can be reused.
@@ -82,6 +107,41 @@ Accessibility: submitting on Enter when the search term is entered in the Input 
 - Adding better navigation to switch between pages.
 - Renaming the models as `company.model.ts` with the model extension.
 - Further pages can be refactored into their specific folders for easy categorization.
-- Adding unit tests for each component to test the functions.
 - Adding local storage to save state if the app is hard refreshed.
 - Moving mock interceptor to Interceptor folder
+
+# Application Development Overview
+
+## Data Handling Strategies
+
+### 1. Data Mocking for Development
+
+To facilitate local isolated development and mock authentication, the application utilizes the `MockdataService`. This service provides a simulated environment for testing authentication functionality. A hard refresh will log out the user, requiring a new login. For testing purposes, the provided credentials are:
+- **Username:** testuser
+- **Password:** @@123456
+
+### 2. Efficient Data Loading
+
+The `Officers` component optimizes data loading by making a server request only when necessary. Instead of loading data on page load, the component requests data specifically when the "List Officers" action is triggered. This approach enhances performance by minimizing unnecessary data fetches.
+
+### 3. Persistent Authentication State
+
+The application maintains a persistent authentication state for users. Even after a hard refresh, the user remains authenticated. This behavior allows for thorough testing of login and logout functionality.
+
+## Development Environment Configuration
+
+### 1. CORS Issue Resolution
+
+To address CORS issues during local development, a proxy configuration has been added. This resolves challenges related to Cross-Origin Resource Sharing (CORS) and ensures smooth communication between the application and the server.
+
+## Accessibility Enhancement
+
+### 1. Improved Accessibility Features
+
+In order to enhance accessibility, the application supports submitting the search term by pressing the "Enter" key when focused on the input search field on page 1. This feature ensures a seamless experience for users relying on assistive technologies.
+
+## Usage Instructions
+
+Ensure to follow these guidelines for an optimal development experience. Refer to the sections above for specific details on each aspect.
+
+

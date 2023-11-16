@@ -1,0 +1,33 @@
+<div class="d-flex flex-column min-vh-100">
+  <div class="container">
+    <div class="row d-flex mt-2 mb-3">
+      <a [routerLink]="['/']">Home</a>
+    </div>
+    <div *ngIf="!isError" class="row d-flex flex-column">
+      <!-- Name of the company  -->
+      <div class="bd-company-prop-group">
+        <h1 class="text-uppercase">{{ company.title }}</h1>
+        <span class="t-muted">Company numbers:</span
+        ><span class="fw-bolder">{{ company.company_number }}</span>
+        <hr />
+      </div>
+
+      <app-company-details
+        *ngIf="!toggleShowOfficers"
+        [company]="company"
+        (clickEvent)="handleClickEvent(true)"
+      ></app-company-details>
+
+      <app-officers *ngIf="toggleShowOfficers"
+      (clickEvent)="handleClickEvent(false)"></app-officers>
+    </div>
+    <div *ngIf="isError" class="row d-flex flex-column">
+      <h2 class="text-danger">
+        Error loading data ! Please return to home page and search again
+      </h2>
+    </div>
+    <div class="spacer">
+
+    </div>
+  </div>
+</div>

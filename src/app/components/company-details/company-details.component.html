@@ -1,0 +1,19 @@
+
+
+  <div class="bd-company-prop-group">
+    <p class="label t-muted">Registered Office Address</p>
+    <p class="label fw-bolder">
+      {{ company.description }}
+    </p>
+  </div>
+  <div class="bd-company-prop-group">
+    <p class="label t-muted">Company Status</p>
+    <p class="label fw-bolder">{{ company.company_status }}</p>
+  </div>
+  <div class="bd-company-prop-group">
+    <p class="label t-muted">Incorporated on</p>
+    <p class="label fw-bolder">{{ formatDate(company.date_of_creation) }}</p>
+  </div>
+  <div class="bd-company-prop-group">
+    <a href="javascript:void(0)" (click)="onToggleView()"><h5>List Officers</h5></a>
+  </div>

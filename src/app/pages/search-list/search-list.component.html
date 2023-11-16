@@ -1,0 +1,21 @@
+<div class="d-flex flex-column min-vh-100">
+    <div class="container">
+      <div class="row d-flex mt-2 mb-3">
+        <a [routerLink]="['/']">Home</a>
+      </div>
+      <div class="row d-flex">
+        <div class="col-md-12 mt-3">
+          <h3>Search Results for {{searchTerm}}</h3>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex flex-column pt-3" *ngIf="searchResults && searchResults.items && searchResults.items.length > 0">
+
+          <app-company-search-list [companies]="searchResults.items"></app-company-search-list>
+          <div class="spacer">
+
+          </div>
+
+      </div>
+    </div>
+  </div>

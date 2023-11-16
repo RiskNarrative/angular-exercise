@@ -1,0 +1,10 @@
+
+{
+    "/v1/*": {
+      "target": "https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+
+    }
+  }

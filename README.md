@@ -45,15 +45,19 @@ npm run lint:fix
 
 Followed a structure for creating the components and pages:
 
-1. Navigation pages for routes are under the `pages` folder.
-2. Reusable components are under the `components` folder; a page can be made of many such components.
-3. Services under the `service` folder.
-4. Auth-related service under the `auth` folder.
-5. Variable SCSS files are under the `styles` folder and are imported in `style.scss`.
-6. Layout has the app layout with header, footer, and main components.
-7. HTTP interceptors in the `interceptor` folder.
-8. Bootstrap is imported in the `_global.scss` file.
-9. All modular SCSS files are imported into `style.scss` file.
+/auth: Contains files related to authentication and authorization (guards, interceptors, services).
+/components: Divided into common components and feature-specific components.
+/interceptors: Contains HTTP interceptors, made mock, api interceptor, and other interceptors like logging, error which needs to be created.
+/layout: Contains layout-related components (main layout, sidebar, etc.).
+/models: Defines interfaces and models used in the project.
+/pages: Each subfolder represents a feature/module, and within each feature/module, you have a component and a routing module.
+/services: Contains various services used in the application (mock service, API service, etc.).
+/styles: Will Include SCSS files, such as variables, mixins, and a main styles file.
+app.module.ts: Angular root module.
+app-routing.module.ts: Handles application-level routing.
+app.component.ts: Main component serving as the root component of the application.
+/assets: Contains static assets (images, fonts, etc.).
+/environments: Configuration files for different environments (development, production, etc.).
 
 Added Caching functionality so that we don't load the search list again if navigating back for the same search term. Ideally done as no separate API for company details, so it can be taken from cached data with the same search query.
 
@@ -67,9 +71,10 @@ Added proxy config to resolve issues with CORS to develop locally.
 
 Accessibility: submitting on Enter when the search term is entered in the Input search field page 1.
 
-## Further Improvements that can be done
+## Further Improvements & Refactoring that can be done
 
 - Adding a loading screen when data is loading or in process.
+- Renaming folder service to services
 - Refactor pagination functions to be made generic of Type T into its own component and service so it can be reused.
 - Client-side pagination can be improved with server-side if a paginated API is available.
 - We can use the Government-defined components as per their accessibility standards, which they have published.
@@ -79,3 +84,4 @@ Accessibility: submitting on Enter when the search term is entered in the Input 
 - Further pages can be refactored into their specific folders for easy categorization.
 - Adding unit tests for each component to test the functions.
 - Adding local storage to save state if the app is hard refreshed.
+- Moving mock interceptor to Interceptor folder
